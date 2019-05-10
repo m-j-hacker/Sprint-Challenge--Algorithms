@@ -1,3 +1,12 @@
+# The Plan
+# 
+# The robot will start at index 0 and begin grabbing items and comparing them
+# It will move right and then check if the item is less than the one it is holding
+# If it is, it will grab that item instead and take it back to the position it grabbed
+# The first item from.
+# It will continue to do this until all the items are ordered, at which time
+# the robot will terminate its function
+
 class SortingRobot:
     def __init__(self, l):
         """
@@ -93,11 +102,9 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
-        """
-        Sort the robot's list.
-        """
-        # Fill this out
-        pass
+        
+        while self._light == "ON":
+            if self.can_move_right:
 
 
 if __name__ == "__main__":
