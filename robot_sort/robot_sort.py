@@ -6,6 +6,8 @@
 # The first item from.
 # It will continue to do this until all the items are ordered, at which time
 # the robot will terminate its function
+#
+# We start out holding nothing, which makes compare_items return None
 
 class SortingRobot:
     def __init__(self, l):
@@ -102,9 +104,38 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
+        if self.compare_item == None:
+            self.swap_item
+        while self.can_move_right:
+            self.move_right
+        if self.compare_item == 1:
+            self.swap_item
+                
+
+    # def sort(self):
+    #     while True:
+    #         while self.light_is_on:
+    #             if self.can_move_left:
+    #                 self.move_left
+    #             if self.compare_item == -1:
+    #                 self.swap_item
+    #                 self.set_light_off
+    #             if self.compare_item == None:
+    #                 self.swap_item
+    #                 self.set_light_off
+    #         while self.light_is_off:
+    #             if self.compare_item == None:
+    #                 # This means it's at the beginning
+    #                 self.swap_item
+    #             if self.can_move_right == False:
+    #                 break
+    #             self.move_right
+    #             if self.compare_item == 1:
+    #                 self.swap_item
+    #                 self.set_light_on
+    #         break
         
-        while self._light == "ON":
-            if self.can_move_right:
+
 
 
 if __name__ == "__main__":
