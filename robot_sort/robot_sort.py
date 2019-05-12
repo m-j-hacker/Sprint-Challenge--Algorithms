@@ -96,35 +96,47 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        while self.can_move_right == True:
+        while not self.light_is_on():
+            print(self._list)
+            self.set_light_on()
             
-            while self.light_is_on:
-                self.swap_item
-                self.move_left
-                if self.can_move_left:
-                    self.move_left
-                    if self.compare_item == -1 and self.can_move_left:
-                        self.move_left
-                    if self.compare_item == 1:
-                        self.move_right
-                        self.move_right
-                else:
+            while self.can_move_right():
+                self.swap_item()
+                self.move_right()
+                if self.compare_item() <= 0:
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                    
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.move_left()
+                    self.set_light_off()
+                    while self.compare_item() != None:
+                        self.move_left()
 
-                    self.swap_item
-                    self.move_right
-                    self.set_light_off
+                    self.swap_item()
+                    self.move_right()
+                
+            
+            
                 
                 
-            while not self.light_is_on:
                 
-                self.swap_item
-                self.move_right
-                if self.compare_item == -1:
-                    self.move_left
-                    self.swap_item
-                    self.move_right
-                elif self.compare_item == 1:
-                    self.set_light_on
+            # while not self.light_is_on:
+                
+            #     self.swap_item
+            #     self.move_right
+            #     if self.compare_item == -1:
+            #         self.move_left
+            #         self.swap_item
+            #         self.move_right
+            #     elif self.compare_item == 1:
+            #         self.set_light_on
+            
+            if self.can_move_right() == False:
+                while self.can_move_left():
+                    self.move_left()
                 
         
 
